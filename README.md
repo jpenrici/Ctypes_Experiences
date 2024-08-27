@@ -5,7 +5,7 @@ Simple experiments with Python, Ctypes and C/C++.
 ## Test
 
 - Linux
-- Ubuntu 22.04
+- Ubuntu 24.04
 
 ## Requirements
 
