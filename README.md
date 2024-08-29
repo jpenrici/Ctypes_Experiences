@@ -9,7 +9,7 @@ Simple experiments with Python, Ctypes and C/C++.
 
 ## Requirements
 
-- Python3 (>= 3.12.3)
+- Python (>= 3.12.3)
 - GCC     (>= 13.2.0)
 - CMake   (>= 3.28.3)
 
