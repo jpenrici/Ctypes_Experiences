@@ -9,10 +9,12 @@ struct CVector {
 };
 
 auto myVector() -> std::vector<double>;
+auto sum(const std::vector<double>& vec) -> double;
 
 extern "C" {
 
 auto myStruct() -> CVector;
+auto sum(const double * vec, unsigned n) -> double;
 
 }
 
