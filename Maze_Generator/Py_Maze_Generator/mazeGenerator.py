@@ -48,7 +48,7 @@ class MazeGenerator:
         # Build.
         while unvisited:
             path = []
-            start = unvisited[random.randint(0, len(unvisited) - 1)]
+            start = random.choice(unvisited)
 
             # Walk.
             while start not in visited:
@@ -61,7 +61,8 @@ class MazeGenerator:
                     start = next_cell
                 else:
                     # Protect the boundaries.
-                    start = path.pop()
+                    if path:
+                        start = path.pop()
 
                 if start in path:
                     # Remove loop.
@@ -98,7 +99,7 @@ class MazeGenerator:
 
 
 def test():
-    maze = MazeGenerator(10, 10)
+    maze = MazeGenerator(4, 4)
     result = maze.generate()
     print(result)
 

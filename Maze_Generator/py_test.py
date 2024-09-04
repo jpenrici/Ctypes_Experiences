@@ -5,7 +5,7 @@ from Py_Maze_Generator.mazeView import Display
 
 
 def test():
-    rows, columns = 10, 10
+    rows, columns = 30, 30
     maze = MazeGenerator(rows, columns).generate()
 
     display = Display()
