@@ -1,7 +1,9 @@
 #ifndef MAZEGENERATOR_H
 #define MAZEGENERATOR_H
 
+#include <cstdlib>
 #include <vector>
+
 
 // Maze Generator
 // Reference: Wilson's Loop Erased Random Walk Algorithm
@@ -48,22 +50,34 @@ private:
 
 extern "C" {
 
-// TO DO
-
-struct maze {
-    int ** values;
+struct Maze {
+    int ** values;  // Array 2D
     int rows;
     int cols;
 };
 
-auto mazeGenerator(int rows, int cols) -> maze
+auto mazeGenerator(int rows, int cols) -> Maze
 {
     MazeGenerator m(rows, cols);
-    auto matrix = m.generate();
+    auto maze = m.generate();
 
-    int arr[rows][cols];
+    int ** matrix = (int**) std::malloc(rows * sizeof(int*));
+    for (int r = 0; r < rows; ++r) {
+        matrix[r] = (int*) std::malloc(rows * sizeof(int));
+        for (int c = 0; c < cols; ++c) {
+            matrix[r][c] = maze[r][c];
+        }
+    }
 
-    return {arr, rows, cols};
+    return {matrix, rows, cols};
+}
+
+void destroy(Maze maze)
+{
+    for (int r = 0; r < maze.rows; ++r) {
+        std::free(maze.values[r]);
+    }
+    std::free(maze.values);
 }
 
 }
